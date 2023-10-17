@@ -1,0 +1,98 @@
+---
+title: "data_wrangling_2"
+author: "Qinting Shen"
+date: "2023-10-17"
+output: github_document
+---
+
+```{r setup}
+library(tidyverse)
+library(rvest)
+library(p8105.datasets)
+```
+
+## Strings and Manipulations
+
+```{r}
+string_vec = c("my", "name", "is", "jeff")
+
+str_detect(string_vec, "jeff")
+str_detect(string_vec, "Jeff")
+str_detect(string_vec, "e")
+
+str_replace(string_vec, "jeff", "Jeff")
+```
+
+
+```{r}
+string_vec = c(
+  "i think we all rule for participating",
+  "i think i have been caught",
+  "i think this will be quite fun actually",
+  "it will be fun, i think"
+  )
+
+str_detect(string_vec, "i think")
+str_detect(string_vec, "^i think") # in the beginning of the sentence
+str_detect(string_vec, "i think$") # at the end of the sentence
+```
+
+
+```{r}
+string_vec = c(
+  "Time for a Pumpkin Spice Latte!",
+  "went to the #pumpkinpatch last weekend",
+  "Pumpkin Pie is obviously the best pie",
+  "SMASHING PUMPKINS -- LIVE IN CONCERT!!"
+  )
+
+str_detect(string_vec,"[Pp]umpkin") # with uppercase or lowercase p
+```
+
+
+```{r}
+string_vec = c(
+  '7th inning stretch',
+  '1st half soon to begin. Texas won the toss.',
+  'she is 5 feet 4 inches tall',
+  '3AM - cant sleep :('
+  )
+
+str_detect(string_vec, "[0-9]")
+str_detect(string_vec, "^[0-9]")
+str_detect(string_vec, "^[0-9][a-z]") # 0-9 and a-z at the beginning
+str_detect(string_vec, "^[0-9][a-zA-Z]") # 0-9 and a-z/A-Z at the beginning
+```
+
+
+```{r}
+string_vec = c(
+  'Its 7:11 in the evening',
+  'want to go to 7-11?',
+  'my flight is AA711',
+  'NetBios: scanning ip 203.167.114.66'
+  )
+
+str_detect(string_vec, "7.11") # The character . matches anything.
+```
+
+```{r}
+string_vec = c(
+  'The CI is [2, 5]',
+  ':-]',
+  ':-[',
+  'I found the answer on pages [6-7]'
+  )
+
+str_detect(string_vec, "\\[")
+str_detect(string_vec, "\\[[0-9]")
+
+# Some characters are “special”. These include [ and ], ( and ), and .. If you want to search for these, you have to indicate they’re special using \. Unfortunately, \ is also special, so you have to add one more \.
+```
+
+
+## Factors
+
+
+
+
